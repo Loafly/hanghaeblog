@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Title</title>
+    <script src="/javascript/content.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/content.css">
+</head>
+<body>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    let username = [[${username}]];
+    getCurUsername(username);
+    /*]]>*/
+</script>
+
+<header class="w3-panel w3-center w3-opacity" style="padding:128px 16px">
+    <h1 class="w3-xlarge"><a href="/">Hanghae99</a></h1>
+</header>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-content" style="max-width:1500px">
+    <!-- Header -->
+    <div class="w3-panel w3-opacity" style="padding:128px 16px">
+        <div class="w3-container w3-card-4" style="padding: 10px 10px 10px 10px">
+            <p>
+                <label>주제</label>
+                <input class="w3-input" type="text" id="content-title" style="width:99%" readonly th:value="${contentTitle}">
+            </p>
+            <p>
+                <label>카테고리</label>
+                <input class="w3-input" type="text" id="content-category" style="width:99%; resize:none" readonly th:value="${contentCategory}">
+            </p>
+            <p>
+                <label>작성자</label>
+                <input class="w3-input" type="text" id="content-username" style="width:99%" readonly th:value="${contentUsername}">
+            </p>
+            <p>
+                <label>내용</label>
+                <textarea class="w3-input" type="text" id="content-content" style="width:99%; resize:none" readonly th:text="${contentContent}"></textarea>
+            </p>
+        </div>
+    </div>
+
+    <div class="comment-box">
+        <div id="comment-write">
+            댓글
+            <textarea id="comment-comment" class="w3-input w3-border" style="resize:none"></textarea>
+            <button class="w3-button w3-black" onclick="onclickCommentRegistor()">댓글 등록</button>
+        </div>
+        <div id="comment-list">
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <div style="float: right">
+                    <img class="icon-start-edit" src="images/edit.png" alt="">asdf
+                    <img class="icon-delete" src="images/delete.png" alt="">asdf
+                </div>
+                <div>
+                    <strong style="font-family: 'Stylish', sans-serif; color:hotpink;">작성자</strong>
+                    <span style="font-family: 'Noto Serif KR', serif; color:black;">내용</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-large">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a>
+    </p>
+</footer>
+</body>
+</html>

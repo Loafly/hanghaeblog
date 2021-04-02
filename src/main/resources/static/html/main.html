@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="/javascript/main.js" ></script>
+
+    <title>HangHae99</title>
+</head>
+<body>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    let username = [[${username}]];
+    getCurUsername(username);
+    /*]]>*/
+</script>
+
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
+    <div id="login-pre">
+        <a href="/user/login">로그인</a>
+    </div>
+    <div id="login-after">
+        <span th:text="${username}" class="username"></span>님 환영합니다.
+        <a href="/">내 게시글</a>
+        <a href="/user/logout">로그아웃</a>
+    </div>
+</div>
+
+<!-- Use any element to open the sidenav -->
+<button onclick="openNav()" class="sidenav-btn">☰</button>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-content" style="max-width:1500px">
+    <!-- Header -->
+    <header class="w3-panel w3-center w3-opacity" style="padding:128px 16px">
+        <h1 class="w3-xlarge"><a href="/">Hanghae99</a></h1>
+
+        <div class="w3-padding-32">
+            <div class="w3-bar w3-border">
+                <!--w3-light-grey-->
+                <a onclick="getContents('Spring')" class="w3-bar-item w3-button">Spring</a>
+                <a onclick="getContents('Node.js')" class="w3-bar-item w3-button">Node.js</a>
+                <a onclick="getContents('React')" class="w3-bar-item w3-button">React</a>
+                <a onclick="getContents('React Native')" class="w3-bar-item w3-button">React Native</a>
+            </div>
+        </div>
+
+        <div class="search-container">
+            <div>
+                <select name="searchType" id="searchType">
+                    <option value="username">작성자</option>
+                    <option value="title">타이틀</option>
+                    <option value="content">내용</option>
+                </select>
+                <input type="text" placeholder="Search.." id="searchText">
+                <button type="submit" onclick="searchContents()"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+
+    </header>
+    <!-- Photo Grid -->
+    <div id="cards-box">
+        <div class="card" onclick="location.href=''">
+            <div class="card-header">
+                <div class="card-header-is_closed">
+                    <img id="${id}-edit" class="icon-start-edit" src="../images/edit.png" alt=""
+                         onclick="editPost('${id}')">
+                    <img id="${id}-delete" class="icon-delete" src="../images/delete.png" alt=""
+                         onclick="deleteOne('${id}')">
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card-body-header">
+                    <h1>name</h1>
+                    <p class="card-body-hashtag">#js #node #react</p>
+                    <p class="card-body-nickname">
+                        작성자: </p>
+                </div>
+                <p class="card-body-description">
+                    item
+                </p>
+
+                <div class="card-body-footer">
+                    <hr style="margin-bottom: 8px; opacity: 0.5; border-color: #EF5A31">
+                    <i class="reg_date"> day </i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="btnWritePanel">
+    <button id="submit" class="btnWrite" onclick="writeContent()">글쓰기</button>
+</div>
+
+<div id="container" class="popup-container">
+    <div class="w3-container w3-card-4 modal-panel">
+        <button id="close" class="close">
+            X
+        </button>
+        <p>
+            <label>Name</label>
+            <input class="w3-input" type="text" id="card-username" style="width:90%" readonly>
+        </p>
+        <p>
+            <label>Title</label>
+            <input class="w3-input" type="text" id="card-title" style="width:90%" maxlength="10" required>
+        </p>
+        <p>
+            <label>Content</label>
+            <textarea class="w3-input" type="text" id="card-content" onclick="" style="width:90%; resize:none" required></textarea>
+        </p>
+        <p>
+            <label>Category</label>
+            <br>
+            <select name="subject" id="card-category">
+                <option value="Spring">Spring</option>
+                <option value="Node.js">Node.js</option>
+                <option value="React">React</option>
+                <option value="ReactNative">ReactNative</option>
+            </select>
+        </p>
+        <p>
+            <button class="w3-button w3-section w3-teal w3-ripple" id="btnModify"> 수정하기</button>
+        </p>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-large">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a>
+    </p>
+</footer>
+
+</body>
+</html>
+

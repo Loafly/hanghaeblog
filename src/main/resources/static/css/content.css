@@ -1,0 +1,27 @@
+.comment-box{
+
+}
+
+.card-header-is_closed {
+
+    /*background-color: #EF5A31;*/
+
+    color: #FFF;
+
+    font-weight: bold;
+
+    text-align: center;
+
+    float: right;
+
+    margin: 15px 15px 0 0;
+
+    border-radius: 50%;
+
+    font-weight: bold;
+
+    padding: 10px 10px;
+
+    line-height: 20px;
+
+}
